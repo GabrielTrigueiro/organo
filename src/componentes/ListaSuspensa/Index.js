@@ -1,10 +1,16 @@
 import './ListaSuspensa.css'
 
-const ListaSupsensa = ({label, itens, obrigatorio}) => {
+const ListaSupsensa = ({ label, itens, obrigatorio, valor, aoAlterado }) => {
+
+
+
   return (
     <div className='lista-suspensa'>
       <label>{label}</label>
-      <select required={obrigatorio}>
+      <select
+        onChange={evento => aoAlterado(evento.target.value)}
+        value={valor}
+        required={obrigatorio}>
         {itens.map(item => {
           return <option key={item}>{item}</option>
         })}
@@ -12,5 +18,5 @@ const ListaSupsensa = ({label, itens, obrigatorio}) => {
     </div>
   );
 }
- 
+
 export default ListaSupsensa;

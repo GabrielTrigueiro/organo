@@ -1,13 +1,10 @@
 import './CampoTexto.css'
 
-const CampoTexto = ({label, placeHolder, obrigatorio}) => {
-
-  let valor = ''
+const CampoTexto = ({label, placeHolder, obrigatorio, valor, aoAlterado}) => {
 
   const aoDigitado = (evento) => {
-    console.log(evento.target.value)
-    valor = evento.target.value
-  }
+    aoAlterado(evento.target.value)
+}
 
   return (
     <div className="campo-texto">
