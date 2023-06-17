@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 import Botao from '../Botao';
 import CampoTexto from '../CampoTexto';
 import ListaSupsensa from '../ListaSuspensa/Index';
@@ -15,14 +16,19 @@ const Formulario = () => {
     'Inovação e Gestão',
   ]
 
+  const aoSalvar = useCallback((evento) => {
+    evento.preventDefault()
+    console.log("form foi submetido")
+  }, [])
+
   return (
     <section className='formulario'>
-      <form>
+      <form onSubmit={aoSalvar}>
         <h2>Preencha os dados para criar o card do colaborador</h2>
-        <CampoTexto label="Nome" placeHolder="Digite seu nome" />
-        <CampoTexto label="Cargo" placeHolder="Digite seu cargo" />
+        <CampoTexto obrigatorio label="Nome" placeHolder="Digite seu nome" />
+        <CampoTexto obrigatorio label="Cargo" placeHolder="Digite seu cargo" />
         <CampoTexto label="Imagem" placeHolder="Digite o endereço da sua imagem" />
-        <ListaSupsensa label={"Times"} itens={times}/>
+        <ListaSupsensa obrigatorio label={"Times"} itens={times}/>
         <Botao>
           Criar um card
         </Botao>

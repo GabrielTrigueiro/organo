@@ -1,10 +1,10 @@
 import './ListaSuspensa.css'
 
-const ListaSupsensa = ({label, itens}) => {
+const ListaSupsensa = ({label, itens, obrigatorio}) => {
   return (
     <div className='lista-suspensa'>
       <label>{label}</label>
-      <select>
+      <select required={obrigatorio}>
         {itens.map(item => {
           return <option key={item}>{item}</option>
         })}
