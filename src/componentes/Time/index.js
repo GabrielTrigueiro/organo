@@ -20,10 +20,11 @@ const Time = ({ colaborador, time }) => {
       <div className='colaboradores'>
         {colaborador.map((item) => (
           <Colaborador
-            key={item.name}
+            key={item.nome}
             cargo={item.cargo}
             imagem={item.imagem}
             nome={item.nome}
+            cor={time.corPrimaria}
           />
         ))}
       </div>
