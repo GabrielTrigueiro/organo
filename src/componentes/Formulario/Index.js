@@ -5,17 +5,7 @@ import CampoTexto from '../CampoTexto';
 import ListaSupsensa from '../ListaSuspensa/Index';
 import './Formulario.css'
 
-const Formulario = ({ aoColaboradorCadastrado }) => {
-
-  const times = [
-    'Programação',
-    'Front-End',
-    'Data Science',
-    'Devops',
-    'Ux e Designe',
-    'Mobile',
-    'Inovação e Gestão',
-  ]
+const Formulario = (props) => {
 
   const [nome, setNome] = useState('');
   const [cargo, setCargo] = useState('');
@@ -24,13 +14,13 @@ const Formulario = ({ aoColaboradorCadastrado }) => {
 
   const aoSalvar = useCallback((evento) => {
     evento.preventDefault()
-    aoColaboradorCadastrado({
+    props.aoColaboradorCadastrado({
       nome,
       cargo,
       imagem,
       time
     })
-  },[nome,cargo,imagem,time,aoColaboradorCadastrado])
+  },[nome,cargo,imagem,time,props])
 
   return (
     <section className='formulario'>
@@ -58,7 +48,7 @@ const Formulario = ({ aoColaboradorCadastrado }) => {
           valor={time}
           obrigatorio
           label={"Times"}
-          itens={times} />
+          itens={props.times} />
         <Botao>
           Criar um card
         </Botao>
