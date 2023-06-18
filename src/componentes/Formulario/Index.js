@@ -1,10 +1,11 @@
 import { useCallback, useState } from 'react';
+
 import Botao from '../Botao';
 import CampoTexto from '../CampoTexto';
 import ListaSupsensa from '../ListaSuspensa/Index';
 import './Formulario.css'
 
-const Formulario = () => {
+const Formulario = ({ aoColaboradorCadastrado }) => {
 
   const times = [
     'Programação',
@@ -23,8 +24,13 @@ const Formulario = () => {
 
   const aoSalvar = useCallback((evento) => {
     evento.preventDefault()
-    console.log("form foi submetido", nome, cargo, imagem, time)
-  }, [nome, cargo, imagem, time])
+    aoColaboradorCadastrado({
+      nome,
+      cargo,
+      imagem,
+      time
+    })
+  },[nome,cargo,imagem,time,aoColaboradorCadastrado])
 
   return (
     <section className='formulario'>
