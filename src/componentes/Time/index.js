@@ -1,10 +1,14 @@
 import Colaborador from '../Colaborador';
 import './Time.css'
 
-const Time = (props) => {
+const Time = ({ colaborador, time }) => {
 
   const css = {
-    backgroundColor: props.time.corSecundaria
+    backgroundColor: time.corSecundaria
+  }
+
+  if(colaborador.length === 0){
+    return null
   }
 
   return (
@@ -12,7 +16,17 @@ const Time = (props) => {
       className='time'
       style={css}
     >
-      <h3 style={{borderColor: props.time.corPrimaria}}>{props.time.nome}</h3>
+      <h3 style={{ borderColor: time.corPrimaria }}>{time.nome}</h3>
+      <div className='colaboradores'>
+        {colaborador.map((item) => (
+          <Colaborador
+            key={item.name}
+            cargo={item.cargo}
+            imagem={item.imagem}
+            nome={item.nome}
+          />
+        ))}
+      </div>
     </section>
   );
 }

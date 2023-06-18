@@ -47,7 +47,6 @@ function App() {
   const [colaboradores, setColaboradores] = useState([])
 
   const aoNovoColaboradorAdicionado = useCallback((colaborador) => {
-    console.log(colaborador)
     setColaboradores([...colaboradores, colaborador])
   }, [colaboradores])
 
@@ -58,7 +57,9 @@ function App() {
         times={times.map(time => time.nome)}
         aoColaboradorCadastrado={aoNovoColaboradorAdicionado}
       />
-      {times.map(time => <Time key={time.nome} time={time} />)}
+      {times.map(time => <Time key={time.nome} time={time} colaborador={
+        colaboradores.filter(colaborador => colaborador.time === time.nome)
+      }/>)}
     </div>
   );
 }
