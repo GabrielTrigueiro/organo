@@ -1,8 +1,7 @@
 import Colaborador from '../Colaborador'
 import './Time.css'
 
-const Time = ({time, colaboradores}) => {
-
+const Time = ({time, colaboradores, aoDeletar}) => {
     const css = { backgroundColor: time.corSecundaria }
 
     if (colaboradores.length === 0) {
@@ -20,7 +19,7 @@ const Time = ({time, colaboradores}) => {
                         nome={colaborador.nome}
                         cargo={colaborador.cargo}
                         imagem={colaborador.imagem}
-                        // aoDeletar={}
+                        aoDeletar={aoDeletar}
                     />
                 ))}
             </div>
