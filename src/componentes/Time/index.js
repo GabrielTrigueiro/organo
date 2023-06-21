@@ -1,3 +1,5 @@
+import hexToRgba from "hex-to-rgba"
+
 import Colaborador from '../Colaborador'
 import './Time.css'
 
@@ -12,7 +14,7 @@ const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
             className='time'
             style={{
                 backgroundImage: 'url(/imagens/fundo.png)',
-                backgroundColor: time.corPrimaria
+                backgroundColor: hexToRgba(time.cor, '0.6')
             }}
         >
             <input
@@ -33,7 +35,7 @@ const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
             <div className='colaboradores'>
                 {colaboradores.map(colaborador => (
                     <Colaborador
-                        corDeFundo={time.corSecundaria}
+                        corDeFundo={time.cor}
                         key={colaborador.nome}
                         nome={colaborador.nome}
                         cargo={colaborador.cargo}
