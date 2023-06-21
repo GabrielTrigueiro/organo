@@ -22,9 +22,7 @@ const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
                 className='input-cor'
                 value={time.corSecundaria}
                 //muda cor de fundo
-                onChange={
-                    evento => mudarCor(evento.target.value, time.nome)
-                }
+                onChange={evento => mudarCor(evento.target.value, time.id)}
             />
             <h3
                 style={{
@@ -36,10 +34,8 @@ const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
                 {colaboradores.map(colaborador => (
                     <Colaborador
                         corDeFundo={time.cor}
-                        key={colaborador.nome}
-                        nome={colaborador.nome}
-                        cargo={colaborador.cargo}
-                        imagem={colaborador.imagem}
+                        key={colaborador.id}
+                        colaborador={colaborador}
                         aoDeletar={aoDeletar}
                     />
                 ))}
