@@ -29,8 +29,8 @@ const Formulario = (props) => {
     }
 
     return (
-        <section className="formulario">
-            <form onSubmit={aoSalvar}>
+        <section className="formulario-container">
+            <form className='formulario' onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
                 <CampoTexto
                     obrigatorio={true}
@@ -63,7 +63,7 @@ const Formulario = (props) => {
                     Criar Card
                 </Botao>
             </form>
-            <form onSubmit={(evento) => {
+            <form className='formulario' onSubmit={(evento) => {
                 evento.preventDefault()
                 props.cadastrarTime({nome: novoTime, cor: corNovoTime})
             }}>
