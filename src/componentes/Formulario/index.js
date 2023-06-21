@@ -11,6 +11,9 @@ const Formulario = (props) => {
     const [imagem, setImagem] = useState('')
     const [time, setTime] = useState('')
 
+    const [novoTime, setNovoTime] = useState('')
+    const [corNovoTime, setCorNovoTime] = useState('')
+
     const aoSalvar = (evento) => {
         evento.preventDefault()
         props.aoColaboradorCadastrado({
@@ -29,29 +32,29 @@ const Formulario = (props) => {
         <section className="formulario">
             <form onSubmit={aoSalvar}>
                 <h2>Preencha os dados para criar o card do colaborador</h2>
-                <CampoTexto 
+                <CampoTexto
                     obrigatorio={true}
                     label="Nome"
-                    placeholder="Digite seu nome" 
+                    placeholder="Digite seu nome"
                     valor={nome}
                     aoAlterado={valor => setNome(valor)}
                 />
                 <CampoTexto
                     obrigatorio={true}
                     label="Cargo"
-                    placeholder="Digite seu cargo" 
+                    placeholder="Digite seu cargo"
                     valor={cargo}
                     aoAlterado={valor => setCargo(valor)}
                 />
                 <CampoTexto
                     label="Imagem"
-                    placeholder="Digite o endereço da imagem" 
+                    placeholder="Digite o endereço da imagem"
                     valor={imagem}
                     aoAlterado={valor => setImagem(valor)}
                 />
                 <ListaSuspensa
                     obrigatorio={true}
-                    label="Time" 
+                    label="Time"
                     itens={props.times}
                     valor={time}
                     aoAlterado={valor => setTime(valor)}
@@ -59,6 +62,27 @@ const Formulario = (props) => {
                 <Botao>
                     Criar Card
                 </Botao>
+            </form>
+            <form onSubmit={(evento) => {
+                evento.preventDefault()
+                props.cadastrarTime({nome: novoTime, cor: corNovoTime})
+            }}>
+                <h2>Preencha os dados para criar um novo time</h2>
+                <CampoTexto
+                    obrigatorio
+                    label="Nome"
+                    placeholder="Digite o nome do time"
+                    valor={novoTime}
+                    aoAlterado={valor => setNovoTime(valor)}
+                />
+                <CampoTexto
+                    obrigatorio
+                    label="Cor"
+                    placeholder="Digite a cor do time"
+                    valor={corNovoTime}
+                    aoAlterado={valor => setCorNovoTime(valor)}
+                />
+                <Botao> Criar novo time </Botao>
             </form>
         </section>
     )
