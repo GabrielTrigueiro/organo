@@ -3,7 +3,7 @@ import hexToRgba from "hex-to-rgba"
 import Colaborador from '../Colaborador'
 import './Time.css'
 
-const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
+const Time = ({ time, colaboradores, aoDeletar, mudarCor, aoFavoritar }) => {
 
     if (colaboradores.length === 0) {
         return null
@@ -33,6 +33,7 @@ const Time = ({ time, colaboradores, aoDeletar, mudarCor }) => {
             <div className='colaboradores'>
                 {colaboradores.map(colaborador => (
                     <Colaborador
+                        aoFavoritar={aoFavoritar}
                         corDeFundo={time.cor}
                         key={colaborador.id}
                         colaborador={colaborador}
